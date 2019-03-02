@@ -4,6 +4,8 @@
   "description": " A vue-based sidebar tool that supports menu switching. 一个基于 vue 的支持菜单切换的侧边栏工具。",
   "main": "src/index.js",
   "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server "
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,26 @@
   "bugs": {
     "url": "https://github.com/txs1992/vue-menu-sidebar/issues"
   },
-  "homepage": "https://github.com/txs1992/vue-menu-sidebar#readme"
+  "homepage": "https://github.com/txs1992/vue-menu-sidebar#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
+    "content-disposition": "^0.5.3",
+    "css-loader": "^2.1.0",
+    "express": "^4.16.4",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.8",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-middleware": "^3.6.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "vue": "^2.6.8"
+  }
 }
