@@ -5,7 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server "
+    "dev": "webpack-dev-server --inline --progress --config webpack.config.js",
+    "lint": "eslint --ext .js,.vue src",
+    "format": "prettier --config ./.prettierrc.yaml --write '**/*.{js,bue,css,scss}'",
+    "precommit": "pretty-quick --staged"
   },
   "repository": {
     "type": "git",
@@ -26,12 +29,26 @@
   "homepage": "https://github.com/txs1992/vue-menu-sidebar#readme",
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
+    "eslint": "^5.15.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
     "sass-loader": "^7.1.0",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
