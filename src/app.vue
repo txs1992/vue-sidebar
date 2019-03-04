@@ -2,7 +2,7 @@
   <div class="cpt-app">
     <menu-sidebar :visible.sync="visible">
       <div slot="menu">menu</div>
-      <div>内容</div>
+      <div>{{ message }}</div>
     </menu-sidebar>
     <menu-sidebar placement="right" :visible.sync="rightVisible">
       <div>内容</div>

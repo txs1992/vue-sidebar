@@ -7,8 +7,10 @@
       <div class="toggle-button" @click="sidebarVisible = !sidebarVisible">
         <i class="icon" :class="iconClass"></i>
       </div>
-      <div class="content">
-        <slot></slot>
+      <div class="content-wrapper">
+        <div class="content">
+          <slot></slot>
+        </div>
       </div>
     </div>
   </div>
@@ -41,10 +43,12 @@ export default {
   },
 
   mounted() {
-    const el = this.$el.querySelector('.content')
-    if (el) {
-      el.style.width = this.width
+    const el = this.$el.querySelector('.content-wrapper')
+    const content = el.querySelector('.content')
+    if (el && content) {
       this.contentEL = el
+      el.style.width = this.width
+      content.style.width = this.width
     }
   },
 
@@ -97,7 +101,7 @@ $white: #fff;
     flex-direction: column;
     background: $white;
 
-    .content {
+    .content-wrapper {
       overflow: hidden;
       transition: width 0.5s;
     }
