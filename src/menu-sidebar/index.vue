@@ -1,13 +1,15 @@
 <template>
-  <div class="cpt-menu-sidebar">
+  <div class="cpt-menu-sidebar" :class="placement">
     <div class="menu-wrapper">
       <slot name="menu"></slot>
     </div>
-    <div class="sidebar-content-wrapper" :class="fadeClass">
+    <div class="sidebar-content-wrapper">
       <div class="toggle-button" @click="sidebarVisible = !sidebarVisible">
         <i class="icon" :class="iconClass"></i>
       </div>
-      <slot></slot>
+      <div class="content" :class="fadeClass">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -17,7 +19,12 @@ const DEFAULT_ICON = 'icon-caret-'
 
 export default {
   props: {
-    visible: Boolean
+    visible: Boolean,
+
+    placement: {
+      type: String,
+      default: 'left'
+    }
   },
 
   computed: {
@@ -37,6 +44,19 @@ export default {
     fadeClass({ sidebarVisible: visible }) {
       return visible ? 'show' : 'hide'
     }
+  },
+
+  watch: {
+    sidebarVisible(v) {
+      const el = this.$el.querySelector('.content')
+      if (el) {
+        if (v) {
+          el.style.width = '330px'
+        } else {
+          el.style.width = '0'
+        }
+      }
+    }
   }
 }
 </script>
@@ -48,44 +68,32 @@ $white: #fff;
 $border-style: 1px solid #c0c4cc;
 
 .cpt-menu-sidebar {
-  position: relative;
-  width: 70px;
-  color: $white;
+  position: absolute;
+  display: flex;
   height: 100%;
-  z-index: 100;
 
   .sidebar-content-wrapper {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    right: 70px;
-    top: 0px;
-    bottom: 0px;
-    width: 330px;
-    z-index: -1;
-    transition: right 0.5s;
     background: $white;
-    border-top: $border-style;
-    border-right: $border-style;
 
-    &.hide {
-      left: -260px;
-    }
-
-    &.show {
-      left: 70px;
+    .content {
+      width: 330px;
+      overflow: hidden;
+      transition: width 0.5s;
+      box-sizing: border-box;
+      border: $border-style;
     }
 
     .toggle-button {
       position: absolute;
       top: 50%;
-      right: -22px;
       width: 20px;
       height: 50px;
       cursor: pointer;
       margin-top: -25px;
       line-height: 50px;
-      // transform: rotate(180deg);
 
       &::before {
         position: absolute;
@@ -109,10 +117,40 @@ $border-style: 1px solid #c0c4cc;
     }
   }
 
-  .menu-wrapper {
-    z-index: 100;
-    height: 100%;
-    background: #666;
+  &.left {
+    left: 0;
+    .sidebar-content-wrapper {
+      .content {
+        border-left: none;
+
+        &.hide {
+          border-right: none;
+        }
+      }
+
+      .toggle-button {
+        right: -22px;
+      }
+    }
+  }
+
+  &.right {
+    right: 0;
+
+    .sidebar-content-wrapper {
+      .content {
+        border-right: none;
+
+        &.hide {
+          border-left: none;
+        }
+      }
+
+      .toggle-button {
+        left: -22px;
+        transform: rotate(180deg);
+      }
+    }
   }
 }
 </style>
