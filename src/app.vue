@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import MenuSidebar from './menu-sidebar/index.vue'
-
 export default {
   data() {
     return {
@@ -20,10 +18,6 @@ export default {
       rightVisible: true,
       message: 'Hello Vue Menu Sidebar'
     }
-  },
-
-  components: {
-    MenuSidebar
   }
 }
 </script>

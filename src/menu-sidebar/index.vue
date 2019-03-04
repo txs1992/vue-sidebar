@@ -18,6 +18,8 @@
 const DEFAULT_ICON = 'icon-caret-'
 
 export default {
+  name: 'MenuSidebar',
+
   props: {
     visible: Boolean,
 
