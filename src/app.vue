@@ -1,7 +1,7 @@
 <template>
   <div class="cpt-app">
     <menu-sidebar :visible.sync="visible">
-      <div slot="menu" style="background: red">menu</div>
+      <div slot="menu">menu</div>
       <div>内容</div>
     </menu-sidebar>
     <menu-sidebar placement="right" :visible.sync="rightVisible">
@@ -41,5 +41,11 @@ body,
   height: 100%;
   position: relative;
   background: #f1f1f1;
+
+  .cpt-menu-sidebar {
+    .menu-wrapper {
+      background: #666;
+    }
+  }
 }
 </style>

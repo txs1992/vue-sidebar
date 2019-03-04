@@ -32,6 +32,20 @@ export default {
     }
   },
 
+  data() {
+    return {
+      contentEL: null
+    }
+  },
+
+  mounted() {
+    const el = this.$el.querySelector('.content')
+    if (el) {
+      el.style.width = this.width
+      this.contentEL = el
+    }
+  },
+
   computed: {
     sidebarVisible: {
       get({ visible }) {
@@ -53,12 +67,11 @@ export default {
 
   watch: {
     sidebarVisible(v) {
-      const el = this.$el.querySelector('.content')
-      if (el) {
+      if (this.contentEL) {
         if (v) {
-          el.style.width = this.width
+          this.contentEL.style.width = this.width
         } else {
-          el.style.width = 0
+          this.contentEL.style.width = 0
         }
       }
     }
@@ -83,7 +96,6 @@ $white: #fff;
     background: $white;
 
     .content {
-      width: 330px;
       overflow: hidden;
       transition: width 0.5s;
     }
