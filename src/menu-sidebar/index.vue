@@ -3,11 +3,11 @@
     <div class="menu-wrapper">
       <slot name="menu"></slot>
     </div>
-    <div class="sidebar-content-wrapper">
+    <div class="sidebar-content-wrapper" :class="fadeClass">
       <div class="toggle-button" @click="sidebarVisible = !sidebarVisible">
         <i class="icon" :class="iconClass"></i>
       </div>
-      <div class="content" :class="fadeClass">
+      <div class="content">
         <slot></slot>
       </div>
     </div>
@@ -20,6 +20,11 @@ const DEFAULT_ICON = 'icon-caret-'
 export default {
   props: {
     visible: Boolean,
+
+    width: {
+      type: String,
+      default: '300px'
+    },
 
     placement: {
       type: String,
@@ -51,9 +56,9 @@ export default {
       const el = this.$el.querySelector('.content')
       if (el) {
         if (v) {
-          el.style.width = '330px'
+          el.style.width = this.width
         } else {
-          el.style.width = '0'
+          el.style.width = 0
         }
       }
     }
@@ -65,7 +70,6 @@ export default {
 @import '/src/assets/font.css';
 
 $white: #fff;
-$border-style: 1px solid #c0c4cc;
 
 .cpt-menu-sidebar {
   position: absolute;
@@ -82,8 +86,6 @@ $border-style: 1px solid #c0c4cc;
       width: 330px;
       overflow: hidden;
       transition: width 0.5s;
-      box-sizing: border-box;
-      border: $border-style;
     }
 
     .toggle-button {
@@ -104,9 +106,6 @@ $border-style: 1px solid #c0c4cc;
         content: '';
         background: rgba(255, 255, 255, 0.8);
         transform: scaleY(1.5) perspective(5px) rotateY(5deg);
-        border: $border-style;
-        border-left-color: $white;
-        border-right-width: 2px;
       }
 
       .icon.icon {
@@ -120,14 +119,6 @@ $border-style: 1px solid #c0c4cc;
   &.left {
     left: 0;
     .sidebar-content-wrapper {
-      .content {
-        border-left: none;
-
-        &.hide {
-          border-right: none;
-        }
-      }
-
       .toggle-button {
         right: -22px;
       }
@@ -138,14 +129,6 @@ $border-style: 1px solid #c0c4cc;
     right: 0;
 
     .sidebar-content-wrapper {
-      .content {
-        border-right: none;
-
-        &.hide {
-          border-left: none;
-        }
-      }
-
       .toggle-button {
         left: -22px;
         transform: rotate(180deg);

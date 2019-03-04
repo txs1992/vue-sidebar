@@ -40,6 +40,6 @@ body,
 .cpt-app {
   height: 100%;
   position: relative;
-  background: #666;
+  background: #f1f1f1;
 }
 </style>
