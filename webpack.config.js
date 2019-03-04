@@ -14,7 +14,7 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
-    filename: '[name.]bundle.js',
+    filename: '[name].bundle.js',
     path: resolve('dist'),
     publicPath: '/'
   },
@@ -42,6 +42,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['vue-style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          mimetype: 'font/opentype',
+          limit: 10000,
+          name: path.posix.join('src/assets', 'fonts/[name].[hash:7].[ext]')
+        }
       }
     ]
   },
@@ -50,7 +59,9 @@ module.exports = {
     hot: true,
     open: true,
     port: 8000,
-    contentBase: './dist'
+    overlay: true,
+    publicPath: '/',
+    historyApiFallback: true
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
