@@ -1,6 +1,8 @@
+import path from 'path'
 import vue from 'rollup-plugin-vue'
-import commonjs from 'rollup-plugin-commonjs'
+import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
+import commonjs from 'rollup-plugin-commonjs'
 
 export default {
   input: 'src/menu-sidebar/index.js',
@@ -10,6 +12,9 @@ export default {
     name: 'MenuSidebar'
   },
   plugins: [
+    postcss({
+      extensions: ['.css']
+    }),
     commonjs(),
     vue(),
     terser()

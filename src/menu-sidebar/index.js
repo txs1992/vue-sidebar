@@ -1,4 +1,3 @@
-import '../assets/font.css'
 import MenuSidebar from './index.vue'
 
 MenuSidebar.install = function(Vue) {
