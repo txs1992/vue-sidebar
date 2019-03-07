@@ -1,4 +1,3 @@
-import path from 'path'
 import vue from 'rollup-plugin-vue'
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
