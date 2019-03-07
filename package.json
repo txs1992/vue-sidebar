@@ -1,6 +1,6 @@
 {
   "name": "vue-menu-sidebar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": " A vue-based sidebar tool that supports menu switching. 一个基于 vue 的支持菜单切换的侧边栏工具。",
   "main": "lib/index.js",
   "scripts": {
