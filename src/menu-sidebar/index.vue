@@ -5,7 +5,7 @@
     </div>
     <div class="sidebar-content-wrapper" :class="fadeClass">
       <div class="toggle-button" @click="sidebarVisible = !sidebarVisible">
-        <i class="icon" :class="iconClass"></i>
+        <div class="triangle" :class="iconClass"></div>
       </div>
       <div class="content-wrapper">
         <div class="content">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const DEFAULT_ICON = 'icon-caret-'
+const DEFAULT_ICON = 'triangle-'
 
 export default {
   name: 'MenuSidebar',
@@ -86,8 +86,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '/src/assets/font.css';
-
 $white: #fff;
 
 .cpt-menu-sidebar {
@@ -107,6 +105,9 @@ $white: #fff;
     }
 
     .toggle-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       top: 50%;
       width: 20px;
@@ -126,10 +127,21 @@ $white: #fff;
         transform: scaleY(1.5) perspective(5px) rotateY(5deg);
       }
 
-      .icon.icon {
-        font-size: 20px;
-        vertical-align: sub;
-        color: #000;
+      .triangle {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent #000 transparent transparent;
+      }
+
+      .triangle-left {
+        border-width: 10px 10px 10px 0;
+        border-color: transparent #000 transparent transparent;
+      }
+
+      .triangle-right {
+        border-width: 10px 0 10px 10px;
+        border-color: transparent transparent transparent #000;
       }
     }
   }

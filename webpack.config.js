@@ -1,7 +1,7 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 function resolve(dir) {
@@ -42,15 +42,6 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['vue-style-loader', 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          mimetype: 'font/opentype',
-          limit: 10000,
-          name: path.posix.join('src/assets', 'fonts/[name].[hash:7].[ext]')
-        }
       }
     ]
   },
