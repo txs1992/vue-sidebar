@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 function resolve(dir) {
   return path.resolve(__dirname, '..', dir)
@@ -42,16 +41,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: {
-            loader: 'style-loader'
-          },
-          use: [
-            {
-              loader: 'css-loader'
-            }
-          ]
-        })
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.scss$/,
@@ -83,10 +73,6 @@ module.exports = {
       title: 'Development',
       filename: 'index.html',
       template: 'index.html'
-    }),
-    new ExtractTextPlugin({
-      filename: '[name].min.css',
-      allChunks: false
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
