@@ -86,8 +86,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '/src/assets/font.css';
-
 $white: #fff;
 
 .cpt-menu-sidebar {
